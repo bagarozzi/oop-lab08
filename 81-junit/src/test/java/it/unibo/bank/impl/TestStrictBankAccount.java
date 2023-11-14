@@ -12,8 +12,6 @@ public class TestStrictBankAccount {
 
     private final static int INITIAL_AMOUNT = 100;
     private final static int USER_ID = 123;
-    private final static double TRANSACTION_FEE = 0.1;
-    private final static int MANAGMENT_FEE = 5;
 
     // Create a new AccountHolder and a StrictBankAccount for it each time tests are executed.
     private AccountHolder mRossi;
@@ -43,7 +41,7 @@ public class TestStrictBankAccount {
      */
     @Test
     public void testManagementFees() {
-        double expectedValue = bankAccount.getBalance() - (bankAccount.getTransactionsCount() * TRANSACTION_FEE + MANAGMENT_FEE);
+        double expectedValue = bankAccount.getBalance() - (bankAccount.getTransactionsCount() * StrictBankAccount.TRANSACTION_FEE + StrictBankAccount.MANAGEMENT_FEE);
         bankAccount.chargeManagementFees(USER_ID);
         assertEquals(expectedValue, bankAccount.getBalance());
     }
