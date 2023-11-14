@@ -53,7 +53,14 @@ public class TestStrictBankAccount {
      */
     @Test
     public void testNegativeWithdraw() {
-        fail("To be implemented");
+        int transactionCountBeforeTest = bankAccount.getTransactionsCount();
+        try {
+            bankAccount.withdraw(USER_ID, -10);
+        }
+        catch(IllegalArgumentException e){
+            assertEquals("Cannot withdraw a negative amount", e.getMessage());
+        }
+        assertEquals(transactionCountBeforeTest, bankAccount.getTransactionsCount());
     }
 
     /**
@@ -61,6 +68,7 @@ public class TestStrictBankAccount {
      */
     @Test
     public void testWithdrawingTooMuch() {
-        fail("To be implemented");
+        int transactionCountBeforeTest = bankAccount.getTransactionsCount();
+        assertEquals(transactionCountBeforeTest, bankAccount.getTransactionsCount());
     }
 }
