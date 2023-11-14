@@ -11,6 +11,9 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class TestStrictBankAccount {
 
     private final static int INITIAL_AMOUNT = 100;
+    private final static int USER_ID = 123;
+    private final static double TRANSACTION_FEE = 0.1;
+    private final static int MANAGMENT_FEE = 5;
 
     // Create a new AccountHolder and a StrictBankAccount for it each time tests are executed.
     private AccountHolder mRossi;
@@ -21,7 +24,7 @@ public class TestStrictBankAccount {
      */
     @BeforeEach
     public void setUp() {
-        mRossi = new AccountHolder("Mario", "Rossi", INITIAL_AMOUNT);
+        mRossi = new AccountHolder("Mario", "Rossi", USER_ID);
         bankAccount = new StrictBankAccount(mRossi, INITIAL_AMOUNT);
     }
 
@@ -40,7 +43,9 @@ public class TestStrictBankAccount {
      */
     @Test
     public void testManagementFees() {
-        fail("To be implemented");
+        double expectedValue = bankAccount.getBalance() - (bankAccount.getTransactionsCount() * TRANSACTION_FEE + MANAGMENT_FEE);
+        bankAccount.chargeManagementFees(USER_ID);
+        assertEquals(expectedValue, bankAccount.getBalance());
     }
 
     /**
