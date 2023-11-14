@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+// import static org.junit.jupiter.api.Assertions.fail;
 
 public class TestStrictBankAccount {
 
@@ -33,7 +33,7 @@ public class TestStrictBankAccount {
      */
     @Test
     public void testInitialization() {
-        assertEquals(0.0, bankAccount.getBalance());
+        assertEquals(INITIAL_AMOUNT, bankAccount.getBalance());
         assertEquals(0, bankAccount.getTransactionsCount());
         assertEquals(mRossi, bankAccount.getAccountHolder());
     }
