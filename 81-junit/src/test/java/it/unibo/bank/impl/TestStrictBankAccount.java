@@ -41,6 +41,7 @@ public class TestStrictBankAccount {
      */
     @Test
     public void testManagementFees() {
+        bankAccount.deposit(USER_ID, 100);
         double expectedValue = bankAccount.getBalance() - (bankAccount.getTransactionsCount() * StrictBankAccount.TRANSACTION_FEE + StrictBankAccount.MANAGEMENT_FEE);
         bankAccount.chargeManagementFees(USER_ID);
         assertEquals(expectedValue, bankAccount.getBalance());
