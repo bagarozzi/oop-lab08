@@ -69,6 +69,11 @@ public class TestStrictBankAccount {
     @Test
     public void testWithdrawingTooMuch() {
         int transactionCountBeforeTest = bankAccount.getTransactionsCount();
+        try{
+            bankAccount.withdraw(USER_ID, bankAccount.getBalance() * 2);
+        } catch(IllegalArgumentException e ){
+            assertEquals("Insufficient balance", e.getMessage());
+        }
         assertEquals(transactionCountBeforeTest, bankAccount.getTransactionsCount());
     }
 }
