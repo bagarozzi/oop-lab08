@@ -38,6 +38,7 @@ public class MiniGUI {
         final JButton write = new JButton("Print a random number on standard output");
         // canvas.add(write, BorderLayout.CENTER);
         partOnePanel.add(write, BorderLayout.CENTER);
+        partOnePanel.add(resultField, BorderLayout.NORTH);
         // frame.setContentPane(canvas);
         frame.setContentPane(partOnePanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
