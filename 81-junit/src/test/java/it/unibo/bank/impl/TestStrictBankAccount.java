@@ -20,7 +20,8 @@ public class TestStrictBankAccount {
      */
     @BeforeEach
     public void setUp() {
-        fail("To be implemented");
+        mRossi = new AccountHolder("Mario", "Rossi", INITIAL_AMOUNT);
+        bankAccount = new StrictBankAccount(mRossi, INITIAL_AMOUNT);
     }
 
     /**
