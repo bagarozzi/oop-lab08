@@ -4,6 +4,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -30,8 +32,9 @@ public class MiniGUI {
     public MiniGUI() {
         final JPanel canvas = new JPanel();
         final JPanel partOnePanel = new JPanel();
+        final JTextField resultField = new JTextField("Result");
         canvas.setLayout(new BorderLayout());
-        partOnePanel.setLayout(new BorderLayout());
+        partOnePanel.setLayout(new BoxLayout(partOnePanel, BoxLayout.X_AXIS));
         final JButton write = new JButton("Print a random number on standard output");
         canvas.add(write, BorderLayout.CENTER);
         partOnePanel.add(write, BorderLayout.CENTER);
