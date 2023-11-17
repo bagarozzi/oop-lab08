@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import java.lang.Thread;
 
 import it.unibo.deathnote.api.DeathNote;
 import it.unibo.deathnote.impl.DeathNoteImpl;
@@ -14,7 +15,8 @@ class TestDeathNote {
     private final int ZERO_RULE_NUMBER = 0;
     private final String HUMAN_NAME = "Marco";
     private final String WRONG_HUMAN_NAME = "Giorgio";
-    private final String SAMPLE_DEATH_CAUSE = "Morte di cacca addosso";
+    private final String SAMPLE_DEATH_CAUSE = "Karting Accident";
+    private final String DEFAULT_CAUSE = "Heart attack";
 
     @BeforeEach
     public void setUp() {
@@ -69,13 +71,20 @@ class TestDeathNote {
     @Test
     public void testWritingCauseWithoutName(){
         try{
-            dn.writeDeathCause(SAMPLE_DEATH_CAUSE);
+            dn.writeDeathCause(null);
         } catch(IllegalStateException e){
             assertEquals(e.getMessage(), "Either the name passed isn't on the list or the cause is null");
         }
     }
     @Test
     public void testWritingCause(){
+        dn.writeName(HUMAN_NAME);
+        assertEquals(dn.getDeathCause(HUMAN_NAME), DEFAULT_CAUSE);
+
+        dn.writeName(WRONG_HUMAN_NAME);
+        assertEquals(dn.writeDeathCause(SAMPLE_DEATH_CAUSE), true);
+        assertEquals(dn.getDeathCause(WRONG_HUMAN_NAME), SAMPLE_DEATH_CAUSE);
+
         
     }
 }
