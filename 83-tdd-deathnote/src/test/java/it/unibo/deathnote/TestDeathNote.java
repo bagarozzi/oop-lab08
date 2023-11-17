@@ -109,6 +109,13 @@ class TestDeathNote {
         assertEquals(dn.getDeathDetails(HUMAN_NAME), "");
         assertEquals(dn.writeDetails(SAMPLE_DEATH_DETAILS), true);
         assertEquals(dn.getDeathDetails(HUMAN_NAME), SAMPLE_DEATH_CAUSE);
-        
+        dn.writeName(WRONG_HUMAN_NAME);
+        try {
+            Thread.sleep(6100l);
+        } catch(InterruptedException e){
+            Assertions.fail("Interrupted exception has been thrown: " + e.getCause());
+        }
+        dn.writeDetails(SAMPLE_DEATH_DETAILS);
+        assertEquals(dn.getDeathDetails(WRONG_HUMAN_NAME), "");
     }
 }
