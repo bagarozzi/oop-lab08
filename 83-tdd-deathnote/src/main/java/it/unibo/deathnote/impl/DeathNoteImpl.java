@@ -102,7 +102,10 @@ public class DeathNoteImpl implements DeathNote {
      * @throws IllegalArgumentException if the provider name is not written in this DeathNote
      */
     public String getDeathCause(String name){
-        throw new IllegalArgumentException();
+        if(!dn.containsKey(name)){
+            throw new IllegalArgumentException();
+        }
+        return (dn.get(name).cause == "" ? dn.get(name).cause : Death.DEFAULT_CAUSE);
     }
 
     /**
@@ -124,13 +127,13 @@ public class DeathNoteImpl implements DeathNote {
     }
 
     private class Death{
-        private final String DEFAULT_CAUSE = "Heart attack";
+        static final String DEFAULT_CAUSE = "Heart attack";
 
         public String cause;
         public String details;
 
         public void Death(){
-            cause = DEFAULT_CAUSE;
+            cause = "";
             details = "";
         }
     }
