@@ -115,7 +115,10 @@ public class DeathNoteImpl implements DeathNote {
      * @throws IllegalArgumentException if the provider name is not written in this DeathNote.
      */
     public String getDeathDetails(String name){
-        throw new IllegalArgumentException();
+        if(!dn.containsKey(name)){
+            throw new IllegalArgumentException();
+        }
+        return dn.get(name).details;
     }
 
     /**
@@ -123,7 +126,7 @@ public class DeathNoteImpl implements DeathNote {
      * @return true if the given name is written in this DeathNote, false otherwise
      */
     public boolean isNameWritten(String name){
-        return false;
+        return dn.containsKey(name);
     }
 
     private class Death{
