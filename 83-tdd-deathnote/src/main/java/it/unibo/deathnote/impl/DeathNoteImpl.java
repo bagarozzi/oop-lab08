@@ -1,12 +1,20 @@
 package it.unibo.deathnote.impl;
 
 import it.unibo.deathnote.api.DeathNote;
-import java.util.Map;
 import java.util.HashMap;
 
 public class DeathNoteImpl implements DeathNote {
 
-    
+    private HashMap<String, Death> dn;
+
+    private String lastWrittenName; 
+    private double timeOfLastWrittenName;
+    private double timeOfLastWrittenCause;
+
+    public DeathNoteImpl(){
+        dn = new HashMap<String, Death>();
+        lastWrittenName = "";
+    }
     /**
      * Returns the rule with the given number.
      *
@@ -80,5 +88,10 @@ public class DeathNoteImpl implements DeathNote {
      */
     public boolean isNameWritten(String name){
         return false;
+    }
+
+    private class Death{
+        private String cause;
+        private String details;
     }
 }

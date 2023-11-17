@@ -45,7 +45,7 @@ class TestDeathNote {
     }
 
     public void testWriteName(){
-        
+        assertEquals(dn.isNameWritten(humanName), false);
         try{
             dn.writeName(null);
         } catch(NullPointerException e){
