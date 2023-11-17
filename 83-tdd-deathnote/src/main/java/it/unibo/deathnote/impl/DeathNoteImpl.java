@@ -58,11 +58,11 @@ public class DeathNoteImpl implements DeathNote {
      * or the cause is null
      */
     public boolean writeDeathCause(String cause){
-        if(cause != null && cause != ""){ /* check if cause is ok */
+        if(cause != null && cause != "" && dn.containsKey(cause)){ /* check if cause is ok */
             throw new IllegalStateException();
         }
         long delta = System.currentTimeMillis() - timeOfLastWrittenName; /* compute time */
-        if(dn.containsKey(cause) && delta <= 40l){
+        if(delta <= 40l){
             Death oldDeath = dn.get(lastWrittenName);
             oldDeath.cause = cause;
             dn.put(lastWrittenName, oldDeath);
