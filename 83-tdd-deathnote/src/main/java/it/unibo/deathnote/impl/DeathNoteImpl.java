@@ -24,7 +24,11 @@ public class DeathNoteImpl implements DeathNote {
      * than the number of rules
      */
     public String getRule(int ruleNumber) {
-        throw new IllegalArgumentException();
+        if(ruleNumber > 0 && ruleNumber <= RULES.size()){
+            return RULES.get(ruleNumber);
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
