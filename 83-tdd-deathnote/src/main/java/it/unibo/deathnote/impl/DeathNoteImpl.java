@@ -84,7 +84,7 @@ public class DeathNoteImpl implements DeathNote {
             throw new IllegalStateException("Either the list is empty or the detail passed is null");
         }
         long delta = System.currentTimeMillis() - timeOfLastWrittenName;
-        if(delta > 40 && delta <= 6000){
+        if(delta > 40l && delta <= 6000l){
             Death oldDeath = dn.get(lastWrittenName);
             oldDeath.details = details;
             dn.put(lastWrittenName, oldDeath);
