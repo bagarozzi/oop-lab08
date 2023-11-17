@@ -45,7 +45,7 @@ class TestDeathNote {
     }
 
     public void testWriteName(){
-
+        
         try{
             dn.writeName(null);
         } catch(NullPointerException e){

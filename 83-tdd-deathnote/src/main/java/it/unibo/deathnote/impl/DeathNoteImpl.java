@@ -1,8 +1,12 @@
 package it.unibo.deathnote.impl;
 
 import it.unibo.deathnote.api.DeathNote;
+import java.util.Map;
+import java.util.HashMap;
 
 public class DeathNoteImpl implements DeathNote {
+
+    
     /**
      * Returns the rule with the given number.
      *
