@@ -56,7 +56,7 @@ class TestDeathNote {
         try{
             dn.writeName(null);
         } catch(NullPointerException e){
-            assertEquals(e.getMessage(), "The name given is null");
+            assertEquals(e.getMessage(), "The name given is either null or blank");
             assertEquals(dn.isNameWritten(null), false);
             assertEquals(dn.isNameWritten(""), false);
         }
@@ -75,7 +75,7 @@ class TestDeathNote {
         try{
             dn.writeDeathCause(null);
         } catch(IllegalStateException e){
-            assertEquals(e.getMessage(), "Either the name passed isn't on the list or the cause is null");
+            assertEquals(e.getMessage(), "Either the list is empty or the cause passed is null");
         }
     }
     @Test
@@ -99,7 +99,7 @@ class TestDeathNote {
         try{
             dn.writeDetails(null);
         } catch(IllegalStateException e){
-            assertEquals(e.getMessage(), "Either the name passed isn't on the list or the cause is null");
+            assertEquals(e.getMessage(), "Either the list is empty or the detail passed is null");
         }
     }
 

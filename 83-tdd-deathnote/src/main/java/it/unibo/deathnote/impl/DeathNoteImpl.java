@@ -43,7 +43,7 @@ public class DeathNoteImpl implements DeathNote {
             timeOfLastWrittenName = System.currentTimeMillis();
         }
         else {
-            throw new NullPointerException("The name given is null");
+            throw new NullPointerException("The name given is either null or blank");
         }
     }
 
@@ -58,7 +58,7 @@ public class DeathNoteImpl implements DeathNote {
      */
     public boolean writeDeathCause(String cause){
         if(cause != null && cause != "" && !dn.isEmpty()){ /* check if cause is ok */
-            throw new IllegalStateException();
+            throw new IllegalStateException("Either the list is empty or the cause passed is null");
         }
         long delta = System.currentTimeMillis() - timeOfLastWrittenName; /* compute time */
         if(delta <= 40l){
@@ -81,7 +81,7 @@ public class DeathNoteImpl implements DeathNote {
      */
     public boolean writeDetails(String details){
         if(details != null && details != "" && !dn.isEmpty()){
-            throw new IllegalStateException();
+            throw new IllegalStateException("Either the list is empty or the detail passed is null");
         }
         long delta = System.currentTimeMillis() - timeOfLastWrittenName;
         if(delta > 40 && delta <= 6000){
@@ -103,7 +103,7 @@ public class DeathNoteImpl implements DeathNote {
      */
     public String getDeathCause(String name){
         if(!dn.containsKey(name)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Either the list is empty or the name passed is null");
         }
         return (dn.get(name).cause == "" ? dn.get(name).cause : Death.DEFAULT_CAUSE);
     }
@@ -116,7 +116,7 @@ public class DeathNoteImpl implements DeathNote {
      */
     public String getDeathDetails(String name){
         if(!dn.containsKey(name)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Either the list is empty or the name passed is null");
         }
         return dn.get(name).details;
     }
