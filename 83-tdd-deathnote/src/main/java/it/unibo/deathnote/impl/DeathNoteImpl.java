@@ -8,7 +8,7 @@ public class DeathNoteImpl implements DeathNote {
     private HashMap<String, Death> dn;
 
     private String lastWrittenName; 
-    private double timeOfLastWrittenName;
+    private long timeOfLastWrittenName;
     private long timeOfLastWrittenCause;
 
     public DeathNoteImpl(){
@@ -27,7 +27,7 @@ public class DeathNoteImpl implements DeathNote {
         if(ruleNumber > 0 && ruleNumber <= RULES.size()){
             return RULES.get(ruleNumber);
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("The rule number passed does not exist");
         }
     }
 
@@ -44,7 +44,7 @@ public class DeathNoteImpl implements DeathNote {
             timeOfLastWrittenName = System.currentTimeMillis();
         }
         else {
-            throw new NullPointerException();
+            throw new NullPointerException("The name given is null");
         }
     }
 
@@ -58,7 +58,17 @@ public class DeathNoteImpl implements DeathNote {
      * or the cause is null
      */
     public boolean writeDeathCause(String cause){
-        throw new IllegalStateException();
+        if(cause != null && cause != ""){ /* check if cause is ok */
+            throw new IllegalStateException();
+        }
+        long delta = System.currentTimeMillis() - timeOfLastWrittenName; /* compute time */
+        if(dn.containsKey(cause) && delta <= 40l){
+            Death oldDeath = dn.get(lastWrittenName);
+            oldDeath.cause = cause;
+            dn.put(lastWrittenName, oldDeath);
+            return true;
+        }
+        return false;
     }
 
     /**
