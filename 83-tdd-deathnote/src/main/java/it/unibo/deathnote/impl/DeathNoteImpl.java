@@ -9,7 +9,6 @@ public class DeathNoteImpl implements DeathNote {
 
     private String lastWrittenName; 
     private long timeOfLastWrittenName;
-    private long timeOfLastWrittenCause;
 
     public DeathNoteImpl(){
         dn = new HashMap<String, Death>();
@@ -58,7 +57,7 @@ public class DeathNoteImpl implements DeathNote {
      * or the cause is null
      */
     public boolean writeDeathCause(String cause){
-        if(cause != null && cause != "" && dn.containsKey(cause)){ /* check if cause is ok */
+        if(cause != null && cause != "" && !dn.isEmpty()){ /* check if cause is ok */
             throw new IllegalStateException();
         }
         long delta = System.currentTimeMillis() - timeOfLastWrittenName; /* compute time */
@@ -81,7 +80,19 @@ public class DeathNoteImpl implements DeathNote {
      * or the details are null
      */
     public boolean writeDetails(String details){
-        throw new IllegalStateException();
+        if(details != null && details != "" && !dn.isEmpty()){
+            throw new IllegalStateException();
+        }
+        long delta = System.currentTimeMillis() - timeOfLastWrittenName;
+        if(delta > 40 && delta <= 6000){
+            Death oldDeath = dn.get(lastWrittenName);
+            oldDeath.details = details;
+            dn.put(lastWrittenName, oldDeath);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /**
