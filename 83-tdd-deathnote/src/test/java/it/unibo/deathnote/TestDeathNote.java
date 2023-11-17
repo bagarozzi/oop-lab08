@@ -110,7 +110,7 @@ class TestDeathNote {
         dn.writeName(HUMAN_NAME);
         assertEquals(dn.getDeathDetails(HUMAN_NAME), "");
         assertEquals(dn.writeDetails(SAMPLE_DEATH_DETAILS), true);
-        assertEquals(dn.getDeathDetails(HUMAN_NAME), SAMPLE_DEATH_CAUSE);
+        assertEquals(dn.getDeathDetails(HUMAN_NAME), SAMPLE_DEATH_DETAILS);
         dn.writeName(WRONG_HUMAN_NAME);
         try {
             Thread.sleep(6100l);
