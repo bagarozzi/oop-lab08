@@ -23,7 +23,7 @@ class TestDeathNote {
     public void testGetRuleWithZero () {
         try {
             dn.getRule(ZERO_RULE_NUMBER);
-            Assertion.fail("Expected exception but none was thrown");
+            Assertions.fail("Expected exception but none was thrown");
         } catch (IllegalArgumentException e) {
             assertEquals(e.getMessage(), "The rule number passed does not exist");
         }
@@ -32,7 +32,7 @@ class TestDeathNote {
     public void testGetRuleWithBigNumber(){
         try {
             dn.getRule(DeathNote.RULES.size() + 1);
-            Assertion.fail("Expected exception but none was thrown");
+            Assertions.fail("Expected exception but none was thrown");
         } catch (IllegalArgumentException e) {
             assertEquals(e.getMessage(), "The rule number passed does not exist");
         }
@@ -62,6 +62,6 @@ class TestDeathNote {
         assertEquals(dn.isNameWritten(""), false);
     }
 
-    
+
 
 }
