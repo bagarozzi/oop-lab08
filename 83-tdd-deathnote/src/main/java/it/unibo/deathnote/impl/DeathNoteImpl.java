@@ -104,8 +104,13 @@ public class DeathNoteImpl implements DeathNote {
     public String getDeathCause(String name){
         if(!dn.containsKey(name)){
             throw new IllegalArgumentException("Either the list is empty or the name passed is null");
+        } 
+        if(dn.get(name).cause == ""){
+            return Death.DEFAULT_CAUSE;
         }
-        return (dn.get(name).cause == "" ? dn.get(name).cause : Death.DEFAULT_CAUSE);
+        else {
+            return dn.get(name).cause;
+        }
     }
 
     /**
