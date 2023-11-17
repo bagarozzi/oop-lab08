@@ -18,6 +18,7 @@ class TestDeathNote {
     private final String SAMPLE_DEATH_CAUSE = "Karting Accident";
     private final String DEFAULT_CAUSE = "Heart attack";
     private final String NEW_DEATH_CAUSE = "Cacca addosso";
+    private final String SAMPLE_DEATH_DETAILS = "Ran for too long";
 
     @BeforeEach
     public void setUp() {
@@ -81,18 +82,33 @@ class TestDeathNote {
     public void testWritingCause(){
         dn.writeName(HUMAN_NAME);
         assertEquals(dn.getDeathCause(HUMAN_NAME), DEFAULT_CAUSE);
-
         dn.writeName(WRONG_HUMAN_NAME);
         assertEquals(dn.writeDeathCause(SAMPLE_DEATH_CAUSE), true);
         assertEquals(dn.getDeathCause(WRONG_HUMAN_NAME), SAMPLE_DEATH_CAUSE);
-
         try {
             Thread.sleep(100l);
         } catch(InterruptedException e){
             Assertions.fail("Interrupted exception has been thrown: " + e.getCause());
         }
-
         dn.writeDeathCause(NEW_DEATH_CAUSE);
         assertEquals(dn.getDeathCause(WRONG_HUMAN_NAME), SAMPLE_DEATH_CAUSE);
+    }
+
+    @Test
+    public void testWritingDetailsWithoutName(){
+        try{
+            dn.writeDetails(null);
+        } catch(IllegalStateException e){
+            assertEquals(e.getMessage(), "Either the name passed isn't on the list or the cause is null");
+        }
+    }
+
+    @Test
+    public void testWritingDetails(){
+        dn.writeName(HUMAN_NAME);
+        assertEquals(dn.getDeathDetails(HUMAN_NAME), "");
+        assertEquals(dn.writeDetails(SAMPLE_DEATH_DETAILS), true);
+        assertEquals(dn.getDeathDetails(HUMAN_NAME), SAMPLE_DEATH_CAUSE);
+        
     }
 }

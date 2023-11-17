@@ -93,7 +93,12 @@ public class DeathNoteImpl implements DeathNote {
     private class Death{
         private final String DEFAULT_CAUSE = "Heart attack";
 
-        private String cause;
-        private String details;
+        public String cause;
+        public String details;
+
+        public void Death(){
+            cause = DEFAULT_CAUSE;
+            details = "";
+        }
     }
 }
