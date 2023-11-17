@@ -9,7 +9,7 @@ public class DeathNoteImpl implements DeathNote {
 
     private String lastWrittenName; 
     private double timeOfLastWrittenName;
-    private double timeOfLastWrittenCause;
+    private long timeOfLastWrittenCause;
 
     public DeathNoteImpl(){
         dn = new HashMap<String, Death>();
@@ -37,7 +37,15 @@ public class DeathNoteImpl implements DeathNote {
      * @throws NullPointerException if the given name is null.
      */
     public void writeName(String name){
-        throw new NullPointerException();
+        if(name != null && name != ""){
+            Death d = new Death();
+            dn.put(name, d);
+            lastWrittenName = name;
+            timeOfLastWrittenName = System.currentTimeMillis();
+        }
+        else {
+            throw new NullPointerException();
+        }
     }
 
     /**
