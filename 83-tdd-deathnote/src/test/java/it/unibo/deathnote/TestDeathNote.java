@@ -2,9 +2,9 @@ package it.unibo.deathnote;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import it.unibo.deathnote.api.DeathNote;
 import it.unibo.deathnote.impl.DeathNoteImpl;
@@ -20,6 +20,7 @@ class TestDeathNote {
         dn = new DeathNoteImpl();
     }
 
+    @Test
     public void testGetRuleWithZero () {
         try {
             dn.getRule(ZERO_RULE_NUMBER);
@@ -29,6 +30,7 @@ class TestDeathNote {
         }
     }
 
+    @Test
     public void testGetRuleWithBigNumber(){
         try {
             dn.getRule(DeathNote.RULES.size() + 1);
@@ -38,6 +40,7 @@ class TestDeathNote {
         }
     }
 
+    @Test
     public void checkNullRules(){
         for(String rule : DeathNote.RULES){
             assertNotEquals("", rule);
@@ -45,6 +48,7 @@ class TestDeathNote {
         }
     }
 
+    @Test
     public void testWritingNullName(){
         try{
             dn.writeName(null);
@@ -55,6 +59,7 @@ class TestDeathNote {
         }
     }
 
+    @Test
     public void testWritingName(){
         assertEquals(dn.isNameWritten(HUMAN_NAME), false);
         dn.writeName(HUMAN_NAME);
@@ -62,6 +67,8 @@ class TestDeathNote {
         assertEquals(dn.isNameWritten(""), false);
     }
 
+    @Test
+    public testWritingCause(){
 
-
+    }
 }
