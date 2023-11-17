@@ -80,7 +80,7 @@ public class DeathNoteImpl implements DeathNote {
      * or the details are null
      */
     public boolean writeDetails(String details){
-        if(details == null || details == "" || !dn.isEmpty()){
+        if(details == null || details == "" || dn.isEmpty()){
             throw new IllegalStateException("Either the list is empty or the detail passed is null");
         }
         long delta = System.currentTimeMillis() - timeOfLastWrittenName;
