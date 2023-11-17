@@ -47,7 +47,7 @@ public class MiniGUI {
          * Handlers
          */
         write.addActionListener(new ActionListener() {
-            @Override
+              @Override
             public void actionPerformed(final ActionEvent e) {
                 int randomValue = randomGenerator.nextInt();
                 System.out.println(randomValue);
@@ -63,8 +63,8 @@ public class MiniGUI {
          * monitors, the primary is selected. In order to deal coherently with
          * multimonitor setups, other facilities exist (see the Java
          * documentation about this issue). It is MUCH better than manually
-         * specify the size of a window in pixel: it takes into account the
          * current resolution.
+         * specify the size of a window in pixel: it takes into account the
          */
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         final int sw = (int) screen.getWidth();
