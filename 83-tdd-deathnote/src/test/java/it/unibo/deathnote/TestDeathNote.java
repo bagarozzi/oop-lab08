@@ -1,6 +1,7 @@
 package it.unibo.deathnote;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Assertions;
@@ -11,6 +12,7 @@ import it.unibo.deathnote.impl.DeathNoteImpl;
 class TestDeathNote {
     private DeathNote dn;
     private final int ZERO_RULE_NUMBER = 0;
+    private final String humanName = "Marco";
 
     @BeforeEach
     public void setUp() {
@@ -32,6 +34,22 @@ class TestDeathNote {
             Assertion.fail("Expected exception but none was thrown");
         } catch (IllegalArgumentException e) {
             assertEquals(e.getMessage(), "The rule number passed does not exist");
+        }
+    }
+
+    public void checkNullRules(){
+        for(String rule : DeathNote.RULES){
+            assertNotEquals("", rule);
+            assertNotEquals(null, rule);
+        }
+    }
+
+    public void testWriteName(){
+
+        try{
+            dn.writeName(null);
+        } catch(NullPointerException e){
+
         }
     }
 
