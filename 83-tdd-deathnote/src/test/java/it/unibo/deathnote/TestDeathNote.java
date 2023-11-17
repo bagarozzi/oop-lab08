@@ -17,6 +17,7 @@ class TestDeathNote {
     private final String WRONG_HUMAN_NAME = "Giorgio";
     private final String SAMPLE_DEATH_CAUSE = "Karting Accident";
     private final String DEFAULT_CAUSE = "Heart attack";
+    private final String NEW_DEATH_CAUSE = "Cacca addosso";
 
     @BeforeEach
     public void setUp() {
@@ -85,6 +86,13 @@ class TestDeathNote {
         assertEquals(dn.writeDeathCause(SAMPLE_DEATH_CAUSE), true);
         assertEquals(dn.getDeathCause(WRONG_HUMAN_NAME), SAMPLE_DEATH_CAUSE);
 
-        
+        try {
+            Thread.sleep(100l);
+        } catch(InterruptedException e){
+            Assertions.fail("Interrupted exception has been thrown: " + e.getCause());
+        }
+
+        dn.writeDeathCause(NEW_DEATH_CAUSE);
+        assertEquals(dn.getDeathCause(WRONG_HUMAN_NAME), SAMPLE_DEATH_CAUSE);
     }
 }
