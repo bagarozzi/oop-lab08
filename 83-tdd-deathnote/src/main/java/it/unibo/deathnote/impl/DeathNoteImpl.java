@@ -140,7 +140,7 @@ public class DeathNoteImpl implements DeathNote {
         public String cause;
         public String details;
 
-        public void Death(){
+        public Death(){
             cause = "";
             details = "";
         }
