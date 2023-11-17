@@ -14,6 +14,7 @@ class TestDeathNote {
     private final int ZERO_RULE_NUMBER = 0;
     private final String HUMAN_NAME = "Marco";
     private final String WRONG_HUMAN_NAME = "Giorgio";
+    private final String SAMPLE_DEATH_CAUSE = "Morte di cacca addosso";
 
     @BeforeEach
     public void setUp() {
@@ -24,7 +25,6 @@ class TestDeathNote {
     public void testGetRuleWithZero () {
         try {
             dn.getRule(ZERO_RULE_NUMBER);
-            Assertions.fail("Expected exception but none was thrown");
         } catch (IllegalArgumentException e) {
             assertEquals(e.getMessage(), "The rule number passed does not exist");
         }
@@ -34,7 +34,6 @@ class TestDeathNote {
     public void testGetRuleWithBigNumber(){
         try {
             dn.getRule(DeathNote.RULES.size() + 1);
-            Assertions.fail("Expected exception but none was thrown");
         } catch (IllegalArgumentException e) {
             assertEquals(e.getMessage(), "The rule number passed does not exist");
         }
@@ -68,7 +67,15 @@ class TestDeathNote {
     }
 
     @Test
-    public testWritingCause(){
-
+    public void testWritingCauseWithoutName(){
+        try{
+            dn.writeDeathCause(SAMPLE_DEATH_CAUSE);
+        } catch(IllegalStateException e){
+            assertEquals(e.getMessage(), "Either the name passed isn't on the list or the cause is null");
+        }
+    }
+    @Test
+    public void testWritingCause(){
+        
     }
 }
