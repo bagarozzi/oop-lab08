@@ -37,11 +37,12 @@ public class MiniGUI {
         final JButton write = new JButton("Print a random number on standard output");   
 
         canvas.setLayout(new BorderLayout());
-        partOnePanel.setLayout(new BoxLayout(partOnePanel, BoxLayout.X_AXIS));
-        partOnePanel.add(write, BorderLayout.CENTER);
-        partOnePanel.add(resultField, BorderLayout.NORTH);
-        canvas.add(partOnePanel, BorderLayout.CENTER);
-        frame.setContentPane(canvas);
+        partOnePanel.setLayout(new BoxLayout(partOnePanel, BoxLayout.LINE_AXIS)); /* was X_AXIS */
+        partOnePanel.add(write); /* ok, no BorderLayout needed */
+        canvas.add(partOnePanel, BorderLayout.CENTER); /* ok */
+
+        partOnePanel.add(resultField, BorderLayout.NORTH); /* ok */
+        frame.setContentPane(canvas); /* ok */
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
          * Handlers
