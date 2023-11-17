@@ -57,7 +57,7 @@ public class DeathNoteImpl implements DeathNote {
      * or the cause is null
      */
     public boolean writeDeathCause(String cause){
-        if(cause != null && cause != "" && !dn.isEmpty()){ /* check if cause is ok */
+        if(cause == null || cause == "" || !dn.isEmpty()){ /* check if cause is ok */
             throw new IllegalStateException("Either the list is empty or the cause passed is null");
         }
         long delta = System.currentTimeMillis() - timeOfLastWrittenName; /* compute time */
@@ -80,7 +80,7 @@ public class DeathNoteImpl implements DeathNote {
      * or the details are null
      */
     public boolean writeDetails(String details){
-        if(details != null && details != "" && !dn.isEmpty()){
+        if(details == null || details == "" || !dn.isEmpty()){
             throw new IllegalStateException("Either the list is empty or the detail passed is null");
         }
         long delta = System.currentTimeMillis() - timeOfLastWrittenName;

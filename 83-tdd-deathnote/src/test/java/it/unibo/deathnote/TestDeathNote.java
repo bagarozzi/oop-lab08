@@ -15,9 +15,11 @@ class TestDeathNote {
     private final int ZERO_RULE_NUMBER = 0;
     private final String HUMAN_NAME = "Marco";
     private final String WRONG_HUMAN_NAME = "Giorgio";
+
     private final String SAMPLE_DEATH_CAUSE = "Karting Accident";
     private final String DEFAULT_CAUSE = "Heart attack";
     private final String NEW_DEATH_CAUSE = "Cacca addosso";
+    
     private final String SAMPLE_DEATH_DETAILS = "Ran for too long";
 
     @BeforeEach
